@@ -14,7 +14,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative flex min-h-[70vh] items-center justify-center bg-gradient-to-br from-pink-50 to-purple-50 px-6">
+    <section className="relative flex min-h-[70vh] items-center justify-center px-6">
       <div className="text-center max-w-4xl">
         {/* HEADING */}
         <h1 className="text-4xl md:text-5xl font-bold text-slate-900 leading-tight text-center">

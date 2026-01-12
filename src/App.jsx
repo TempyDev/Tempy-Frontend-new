@@ -5,7 +5,7 @@ export default function App() {
   return (
     <div>
       <Navbar />
-      <main className="p-6">
+      <main >
         <AppRoutes />
       </main>
     </div>
