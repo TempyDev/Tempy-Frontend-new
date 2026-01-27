@@ -59,7 +59,7 @@ const card = {
 
 export default function FeaturesGrid() {
   return (
-    <section className=" py-20 font-inter">
+    <section className="py-10 font-inter">
       <div className="mx-auto max-w-7xl px-6">
         {/* Heading */}
         <div className="mb-12 text-center">

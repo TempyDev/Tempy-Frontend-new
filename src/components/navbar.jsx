@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { NavLink, useLocation } from "react-router-dom"
-
+import Logo from "../../public/logo.png";
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -28,7 +28,7 @@ export default function Navbar() {
             to="/"
             className="text-2xl font-bold text-purple-600"
           >
-            tempy
+            <img src={Logo} alt="" />
           </NavLink>
 
           {/* DESKTOP MENU */}
