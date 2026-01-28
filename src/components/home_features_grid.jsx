@@ -1,9 +1,11 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const items = [
   {
     title: "Resume & Career",
     desc: "Create clean, professional resumes by filling in simple details.",
+    link: "/resume-builder",
   },
   {
     title: "Marriage Biodata",
@@ -80,34 +82,36 @@ export default function FeaturesGrid() {
           className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
         >
           {items.map((item, i) => (
-            <motion.div
-              key={i}
-              variants={card}
-              whileHover={{
-                y: -6,
-                boxShadow: "0 10px 30px rgba(155,33,254,0.25)",
-                borderColor: "#9B21FE",
-              }}
-              transition={{ type: "spring", stiffness: 420, damping: 28 }}
-              className="rounded-xl border-2 border-slate-200 bg-white p-6 shadow-sm transition cursor-pointer"
-            >
-              {/* Icon placeholder */}
-              <div className="mb-4 h-10 w-10 rounded-lg border border-slate-200 flex items-center justify-center">
-                📄
-              </div>
+            <Link key={i} to={item.link} className="block">
+              <motion.div
+                key={i}
+                variants={card}
+                whileHover={{
+                  y: -6,
+                  boxShadow: "0 10px 30px rgba(155,33,254,0.25)",
+                  borderColor: "#9B21FE",
+                }}
+                transition={{ type: "spring", stiffness: 420, damping: 28 }}
+                className="rounded-xl border-2 border-slate-200 bg-white p-6 shadow-sm transition cursor-pointer"
+              >
+                {/* Icon placeholder */}
+                <div className="mb-4 h-10 w-10 rounded-lg border border-slate-200 flex items-center justify-center">
+                  📄
+                </div>
 
-              <h3 className="text-sm font-semibold text-slate-900">
-                {item.title}
-              </h3>
+                <h3 className="text-sm font-semibold text-slate-900">
+                  {item.title}
+                </h3>
 
-              <p className="mt-2 text-sm text-slate-600 leading-relaxed">
-                {item.desc}
-              </p>
+                <p className="mt-2 text-sm text-slate-600 leading-relaxed">
+                  {item.desc}
+                </p>
 
-              <button className="mt-4 text-sm font-medium text-purple-600 hover:underline">
-                Create now ↗
-              </button>
-            </motion.div>
+                <button className="mt-4 text-sm font-medium text-purple-600 hover:underline">
+                  Create now ↗
+                </button>
+              </motion.div>
+            </Link>
           ))}
         </motion.div>
       </div>

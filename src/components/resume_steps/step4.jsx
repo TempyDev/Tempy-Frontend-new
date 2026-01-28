@@ -1,12 +1,10 @@
 import { useState } from "react";
 
-const Step3 = ({ onNext, onBack }) => {
-  const [currentRole, setCurrentRole] = useState(false);
-  const [showAI, setShowAI] = useState(false);
+const Step4 = ({ onNext, onBack }) => {
   const [showAddMore, setShowAddMore] = useState(false);
 
   const handleSave = () => {
-    setShowAddMore(true); // summary view
+    setShowAddMore(true);
   };
 
   return (
@@ -14,26 +12,24 @@ const Step3 = ({ onNext, onBack }) => {
       {/* LEFT SIDE */}
       <div className="lg:col-span-2 bg-white rounded-xl shadow p-6 flex flex-col">
         {showAddMore ? (
-          /* ================= SUMMARY SCREEN ================= */
+          /* ================= SUMMARY VIEW ================= */
           <>
-            <h2 className="text-lg font-semibold mb-4">Experience</h2>
+            <h2 className="text-lg font-semibold mb-4">Education</h2>
 
-            {/* EXPERIENCE CARD */}
-            {[1, 2].map((_, i) => (
+            {[1].map((_, i) => (
               <div
                 key={i}
                 className="border rounded-lg p-4 mb-4 flex justify-between items-start"
               >
                 <div>
-                  <h3 className="text-sm font-semibold">Tempy</h3>
+                  <h3 className="text-sm font-semibold">
+                    Bachelor of Computer Science
+                  </h3>
                   <p className="text-xs text-gray-500 mb-1">
-                    UI/UX Designer | December 15 2025 – Present
+                    Anna University | 2021 – 2025
                   </p>
-                  <p className="text-xs text-gray-600 leading-relaxed">
-                    Goal-oriented manager dedicated to continuous improvement
-                    and driving positive business impact. Talented problem
-                    solver and leader with high-level business and financial
-                    acumen.
+                  <p className="text-xs text-gray-600">
+                    CGPA: 8.4
                   </p>
                 </div>
 
@@ -49,15 +45,13 @@ const Step3 = ({ onNext, onBack }) => {
               </div>
             ))}
 
-            {/* ADD EXPERIENCE */}
             <button
               onClick={() => setShowAddMore(false)}
               className="w-full border rounded-md py-2 text-sm text-gray-600 hover:bg-gray-50"
             >
-              Add Experience
+              Add Education
             </button>
 
-            {/* FOOTER */}
             <div className="flex justify-between items-center mt-6">
               <button
                 onClick={onBack}
@@ -75,116 +69,72 @@ const Step3 = ({ onNext, onBack }) => {
             </div>
           </>
         ) : (
-          /* ================= FORM SCREEN ================= */
+          /* ================= FORM VIEW ================= */
           <>
-            <h2 className="text-lg font-semibold mb-6">Experience</h2>
+            <h2 className="text-lg font-semibold mb-6">Education</h2>
 
             <div className="flex-1 space-y-4">
               <div>
                 <label className="text-xs font-medium mb-1 block">
-                  Title
+                  Degree
                 </label>
                 <input
                   className="border rounded-md p-2 text-sm w-full"
-                  placeholder="Enter Title"
+                  placeholder="Eg: Bachelor of Computer Science"
+                />
+              </div>
+
+              <div>
+                <label className="text-xs font-medium mb-1 block">
+                  Institution
+                </label>
+                <input
+                  className="border rounded-md p-2 text-sm w-full"
+                  placeholder="College / University name"
                 />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="text-xs font-medium mb-1 block">
-                    Employment type (optional)
+                    Start Year
                   </label>
-                  <select className="border rounded-md p-2 text-sm w-full">
-                    <option>Enter Employment type</option>
-                    <option>Full-time</option>
-                    <option>Part-time</option>
-                    <option>Internship</option>
-                    <option>Contract</option>
-                  </select>
+                  <input
+                    className="border rounded-md p-2 text-sm w-full"
+                    placeholder="2021"
+                  />
                 </div>
 
                 <div>
                   <label className="text-xs font-medium mb-1 block">
-                    Company or organization
+                    End Year
                   </label>
                   <input
                     className="border rounded-md p-2 text-sm w-full"
-                    placeholder="Enter Company"
+                    placeholder="2025"
                   />
                 </div>
               </div>
 
               <div>
                 <label className="text-xs font-medium mb-1 block">
-                  Location
+                  Grade / CGPA (optional)
                 </label>
                 <input
                   className="border rounded-md p-2 text-sm w-full"
-                  placeholder="Enter Location"
+                  placeholder="Eg: 8.4 CGPA"
                 />
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="text-xs font-medium mb-1 block">
-                    Start Date
-                  </label>
-                  <div className="flex gap-2">
-                    <select className="border rounded-md p-2 text-sm w-full" />
-                    <select className="border rounded-md p-2 text-sm w-full" />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="text-xs font-medium mb-1 block">
-                    End Date
-                  </label>
-                  <div className="flex gap-2">
-                    <select
-                      disabled={currentRole}
-                      className="border rounded-md p-2 text-sm w-full disabled:bg-gray-100"
-                    />
-                    <select
-                      disabled={currentRole}
-                      className="border rounded-md p-2 text-sm w-full disabled:bg-gray-100"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-2 text-xs text-gray-600">
-                <input
-                  type="checkbox"
-                  checked={currentRole}
-                  onChange={() => setCurrentRole(!currentRole)}
-                />
-                <span>I am currently working in this role</span>
               </div>
 
               <div>
                 <label className="text-xs font-medium mb-1 block">
-                  Description
+                  Description (optional)
                 </label>
-
                 <textarea
-                  rows={5}
+                  rows={4}
                   className="w-full border rounded-md p-3 text-sm resize-none"
+                  placeholder="Achievements, specialization, etc."
                 />
-
-                <button
-                  type="button"
-                  onClick={() => setShowAI((p) => !p)}
-                  className="mt-2 bg-purple-100 text-purple-700 px-3 py-1.5 rounded-md text-xs font-medium"
-                >
-                  ✨ Enhance With AI
-                </button>
-
-                {showAI && (
-                  <div className="mt-3 border rounded-lg p-3 bg-purple-50 text-xs">
-                    ✨ AI suggestion will appear here
-                  </div>
-                )}
               </div>
             </div>
 
@@ -225,4 +175,4 @@ const Step3 = ({ onNext, onBack }) => {
   );
 };
 
-export default Step3;
+export default Step4;
