@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Mascot_1 from "../assets/images/mascot/mascot_1.png";
 import Mascot_2 from "../assets/images/mascot/mascot_2.png";
 import Mascot_3 from "../assets/images/mascot/mascot_3.png";
+import Mascotbg from "../assets/images/mascot/mascot-bg.png";
 
 const containerVariants = {
   hidden: {},
@@ -25,10 +26,13 @@ const itemVariants = {
 
 const Home_Tempy_Work = () => {
   return (
-    <section className="bg-[#FAF7F3] py-20">
-      <div className="max-w-7xl mx-auto px-6 text-center">
+    <section
+  className="relative py-20 bg-[#FAF7F3] bg-cover bg-center bg-no-repeat"
+  style={{ backgroundImage: `url(${Mascotbg})` }}
+>
+  <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
         
-        {/* Heading */}
+        
         <motion.h2
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
