@@ -71,7 +71,7 @@ const ResumeBuilder = () => {
   const [currentStep, setCurrentStep] = useState(1);
 
   return (
-    <div className="min-h-screen px-6 py-4 bg-gradient-to-br from-[#faf7f5] to-[#f6f2ef]">
+    <div className="min-h-screen px-6 py-4">
       <div className="max-w-7xl mx-auto">
         <Stepper currentStep={currentStep} steps={steps} />
 
