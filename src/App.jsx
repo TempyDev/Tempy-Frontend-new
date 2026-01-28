@@ -5,7 +5,7 @@ export default function App() {
   return (
     <div>
       <Navbar />
-      <main className="bg-gradient-to-b from-[#f9dfdf] via-[#fbefef] to-[#fcf8f8] py-20">
+      <main className="bg-gradient-to-b from-[#F9DFDF] to-[#FAF7F3] py-20">
         <AppRoutes />
       </main>
     </div>
