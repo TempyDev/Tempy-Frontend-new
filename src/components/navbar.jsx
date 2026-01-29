@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { NavLink, useLocation } from "react-router-dom"
 import Logo from "../../public/logo.png";
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -24,11 +25,8 @@ export default function Navbar() {
         <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
 
           {/* LOGO */}
-          <NavLink
-            to="/"
-            className="text-2xl font-bold text-purple-600"
-          >
-            <img src={Logo} alt="" />
+          <NavLink to="/" className="text-2xl font-bold text-purple-600">
+            <img src={Logo} alt="logo" />
           </NavLink>
 
           {/* DESKTOP MENU */}
@@ -40,10 +38,10 @@ export default function Navbar() {
 
           {/* DESKTOP ACTIONS */}
           <div className="hidden md:flex items-center gap-3">
-            <button className="rounded-lg border border-slate-300 px-4 py-2 text-sm hover:bg-slate-100">
+            <button className="rounded-lg border border-slate-300 px-4 py-2 text-sm hover:bg-slate-100 transition">
               Log in
             </button>
-            <button className="rounded-lg bg-purple-600 px-4 py-2 text-sm font-semibold text-white hover:bg-purple-700">
+            <button className="rounded-lg bg-[#9B21FE] px-4 py-2 text-sm font-semibold text-white hover:bg-purple-700 transition">
               Sign up
             </button>
           </div>
@@ -74,7 +72,7 @@ export default function Navbar() {
                 mobileDropdown ? "max-h-60 opacity-100" : "max-h-0 opacity-0"
               }`}
             >
-              <div className="ml-3 mt-2 space-y-1 border-l border-slate-200 pl-3">
+              <div className="ml-3 mt-2 space-y-1 border-l border-purple-100 pl-3">
                 <MobileDropdownItem label="Dashboard" />
                 <MobileDropdownItem label="Settings" />
                 <MobileDropdownItem label="Earnings" />
@@ -89,7 +87,7 @@ export default function Navbar() {
               <button className="rounded-lg border border-slate-300 py-2">
                 Log in
               </button>
-              <button className="rounded-lg bg-purple-600 py-2 font-semibold text-white">
+              <button className="rounded-lg bg-[#9B21FE] py-2 font-semibold text-white">
                 Sign up
               </button>
             </div>
@@ -111,8 +109,8 @@ function DesktopLink({ to, label }) {
       to={to}
       className={`transition ${
         active
-          ? "text-purple-600 font-semibold"
-          : "text-slate-700 hover:text-slate-900"
+          ? "text-[#9B21FE] font-semibold"
+          : "text-slate-700 hover:text-[#9B21FE]"
       }`}
     >
       {label}
@@ -123,16 +121,20 @@ function DesktopLink({ to, label }) {
 function DesktopDropdown() {
   return (
     <div className="relative group">
-      <button className="flex items-center gap-1 text-slate-700 hover:text-slate-900">
+      <button className="group flex items-center gap-1 text-slate-700 hover:text-[#9B21FE] font-medium transition">
         Products
-        <Chevron />
+        <Chevron desktop />
       </button>
 
-      <div className="absolute left-1/2 top-full z-10 mt-3 w-44 -translate-x-1/2
+      <div
+        className="absolute left-1/2 top-full z-20 mt-0 w-52 -translate-x-1/2
         opacity-0 scale-95 pointer-events-none
         group-hover:opacity-100 group-hover:scale-100 group-hover:pointer-events-auto
-        transition-all duration-200
-        bg-white border border-slate-200 rounded-lg shadow-lg">
+        transition-all duration-200 ease-out
+        rounded-xl bg-white shadow-[0_10px_40px_rgba(155,33,254,0.15)]
+        border border-purple-100"
+      >
+        <div className="h-1 w-full rounded-t-xl bg-gradient-to-r from-[#9B21FE] to-fuchsia-500" />
 
         <ul className="p-2 text-sm">
           <DropdownItem label="Dashboard" />
@@ -150,7 +152,7 @@ function DropdownItem({ label }) {
     <li>
       <a
         href="#"
-        className="block rounded px-3 py-2 text-slate-700 hover:bg-slate-100 hover:text-purple-600 transition"
+        className="flex items-center rounded-lg px-4 py-2.5 text-sm font-medium text-slate-700 transition-all duration-200 hover:bg-purple-50 hover:text-[#9B21FE]"
       >
         {label}
       </a>
@@ -173,7 +175,7 @@ function MobileLink({ to, label }) {
 
 function MobileDropdownItem({ label }) {
   return (
-    <div className="rounded px-2 py-1 text-sm text-slate-600 hover:bg-slate-100 hover:text-purple-600 cursor-pointer">
+    <div className="rounded px-2 py-1 text-sm text-slate-600 hover:bg-purple-50 hover:text-[#9B21FE] cursor-pointer">
       {label}
     </div>
   )
@@ -181,12 +183,13 @@ function MobileDropdownItem({ label }) {
 
 /* ================= ICON ================= */
 
-function Chevron({ rotate }) {
+function Chevron({ rotate, desktop }) {
   return (
     <svg
-      className={`h-4 w-4 transition-transform duration-200 ${
-        rotate ? "rotate-180" : ""
-      }`}
+      className={`h-4 w-4 transition-all duration-300
+        ${desktop ? "group-hover:rotate-180 group-hover:text-[#9B21FE]" : ""}
+        ${rotate ? "rotate-180 text-[#9B21FE]" : "text-slate-500"}
+      `}
       fill="none"
       stroke="currentColor"
       strokeWidth="2"
