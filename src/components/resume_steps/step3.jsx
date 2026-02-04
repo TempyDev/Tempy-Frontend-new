@@ -19,7 +19,7 @@ const Step3 = ({ onNext, onBack }) => {
   };
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 max-w-7xl mx-auto pt-10">
       {/* LEFT SIDE FORM */}
       <div className="lg:col-span-2 bg-white rounded-2xl shadow-sm border border-gray-100 p-8 flex flex-col min-h-[600px]">
         

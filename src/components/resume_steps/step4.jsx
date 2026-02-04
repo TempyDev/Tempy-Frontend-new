@@ -10,7 +10,7 @@ const Step4 = ({ onNext, onBack }) => {
   };
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 pt-10">
       {/* LEFT SIDE */}
       <div className="lg:col-span-2 bg-white rounded-2xl shadow-sm border border-gray-100 p-8 flex flex-col">
         {showAddMore ? (
