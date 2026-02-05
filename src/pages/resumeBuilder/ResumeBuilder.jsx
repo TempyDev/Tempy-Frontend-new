@@ -57,6 +57,8 @@ import Step2 from "../../components/resume_steps/step2";
 import Step3 from "../../components/resume_steps/step3";
 import Step4 from "../../components/resume_steps/step4";
 import Step5 from "../../components/resume_steps/step5";
+import Step6 from "../../components/resume_steps/step6";
+import Step7 from "../../components/resume_steps/step7";
 
 const steps = [
   "Personal Details",
@@ -108,6 +110,12 @@ const ResumeBuilder = () => {
             onNext={() => setCurrentStep(6)}
           />
         )}
+        {currentStep === 6 && (
+          <Step6
+            onBack={() => setCurrentStep(5)}
+          />
+        )}
+       
       </div>
     </div>
   );
