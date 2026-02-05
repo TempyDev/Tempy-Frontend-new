@@ -73,6 +73,10 @@ const ResumeBuilder = () => {
   return (
     <div className="min-h-screen px-6 py-4">
       <div className="max-w-7xl mx-auto">
+        <div className="text-center max-w-4xl py-16 pt-6 m-auto">
+          <h1 className=" text-centertext-4xl md:text-5xl font-bold text-slate-900 leading-tight text-center">Create <span className="relative inline-flex text-[#DA29B8]">Resume</span></h1>
+          <p className="mt-4 text-slate-600 text-center">Add your details and preview your resume as you go.</p>
+        </div>
         <Stepper currentStep={currentStep} steps={steps} />
 
         {currentStep === 1 && (

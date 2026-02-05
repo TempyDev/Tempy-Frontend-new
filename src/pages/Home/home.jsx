@@ -5,7 +5,7 @@ import Home_Tempy_Work from "../../components/home_tempy_work";
 export default function Home() {
   return (
     <div>
-      <div className="bg-gradient-to-b from-[#f9dfdf] via-[#fbefef] to-[#fcf8f8]">
+      <div className="">
         <Hero_Section />
         <FeaturesGrid />
       </div>
