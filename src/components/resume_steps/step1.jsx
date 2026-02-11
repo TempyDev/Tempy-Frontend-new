@@ -2,13 +2,10 @@ const Step1 = ({ onNext }) => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 pt-10">
 
-      {/* LEFT FORM CARD */}
       <div className="lg:col-span-2 bg-white rounded-xl shadow p-6 flex flex-col">
         <h2 className="text-lg font-semibold mb-6">Personal Details</h2>
 
-        {/* FORM CONTENT */}
        <div className="flex-1 space-y-6">
-  {/* Row 1: Full Name */}
   <div className="flex flex-col gap-1.5">
     <label className="text-sm font-medium text-gray-700">Full name</label>
     <input
@@ -17,7 +14,6 @@ const Step1 = ({ onNext }) => {
     />
   </div>
 
-  {/* Row 2: Country, City, Pincode */}
   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
     <div className="flex flex-col gap-1.5 md:col-span-1">
       <label className="text-sm font-medium text-gray-700">Country</label>
@@ -41,7 +37,6 @@ const Step1 = ({ onNext }) => {
     </div>
   </div>
 
-  {/* Row 3: Email and Phone */}
   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
     <div className="flex flex-col gap-1.5 md:col-span-2">
       <label className="text-sm font-medium text-gray-700">Email</label>
@@ -59,7 +54,6 @@ const Step1 = ({ onNext }) => {
     </div>
   </div>
 
-  {/* Row 4: GitHub */}
   <div className="flex flex-col gap-1.5">
     <label className="text-sm font-medium text-gray-700">GitHub</label>
     <div className="relative">
@@ -74,7 +68,6 @@ const Step1 = ({ onNext }) => {
   </div>
 </div>
 
-        {/* FOOTER BUTTON (NO OVERLAP) */}
         <div className="flex justify-end pt-6 border-t mt-6">
           <button
             onClick={onNext}
@@ -85,8 +78,8 @@ const Step1 = ({ onNext }) => {
         </div>
       </div>
 
-      {/* RIGHT PREVIEW */}
-     {/* RIGHT PREVIEW */}
+   
+     
 <div className="hidden lg:block">
   <div className="sticky top-10">
     <div className="text-center mb-6">
@@ -98,11 +91,11 @@ const Step1 = ({ onNext }) => {
       </p>
     </div>
 
-    {/* RESUME PAPER WRAPPER */}
+  
     <div className="bg-[#FAF7F3] border border-gray-100 rounded-xl p-8 flex justify-center items-start min-h-[600px] shadow-sm">
       <div className="w-full bg-white shadow-2xl rounded-sm aspect-[1/1.41] p-8 overflow-hidden origin-top scale-95 transition-transform">
         
-        {/* RESUME HEADER CONTENT (MATCHING IMAGE) */}
+        
         <div className="text-center border-b pb-4 mb-4">
           <h1 className="text-2xl font-serif text-gray-800 tracking-wide uppercase">Janna Gardner</h1>
           <p className="text-[9px] text-gray-500 mt-1 uppercase tracking-tighter">
@@ -110,7 +103,7 @@ const Step1 = ({ onNext }) => {
           </p>
         </div>
 
-        {/* RESUME BODY MOCKUP */}
+    
         <div className="space-y-4">
           <div className="space-y-1">
             <h2 className="text-[10px] font-bold text-gray-800 border-b border-gray-100 pb-0.5 uppercase tracking-wider">Experience</h2>
