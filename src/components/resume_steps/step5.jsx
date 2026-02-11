@@ -116,7 +116,7 @@ const Step5 = ({ onNext, onBack }) => {
         </div>
 
         {/* FOOTER */}
-        <div className="flex justify-center gap-4 mt-12 pt-8 border-t border-gray-100">
+        <div className="flex justify-end gap-4 mt-12 pt-8 border-t border-gray-100">
           <button onClick={onBack} className="px-12 py-3 rounded-xl border border-gray-200 text-sm font-bold text-gray-700 hover:bg-gray-50 transition-all">
             Prev
           </button>

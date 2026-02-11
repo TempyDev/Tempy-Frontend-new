@@ -78,7 +78,7 @@ const Step1 = ({ onNext }) => {
         <div className="flex justify-end pt-6 border-t mt-6">
           <button
             onClick={onNext}
-            className="bg-purple-600 text-white px-4 py-2 rounded-md text-sm hover:bg-purple-700"
+            className="px-10 py-2.5 rounded-lg bg-[#9333ea] text-white text-sm font-semibold shadow-md hover:bg-purple-700"
           >
             Save & continue
           </button>
