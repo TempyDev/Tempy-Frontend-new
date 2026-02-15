@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom"
-import Home from "../pages/Home/Home";
+import HomeMain from "../pages/Home/home_main";
 import ResumeBuilder from "../pages/resumeBuilder/ResumeBuilder";
 import ResumeTemplates  from "../pages/resumeBuilder/ResumeTemplate";
 import ResumeReviewFinalScreen from "../pages/resumeBuilder/FinalReview"
@@ -7,7 +7,7 @@ import ResumeReviewFinalScreen from "../pages/resumeBuilder/FinalReview"
 export default function AppRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<HomeMain />} />
       <Route path="/resume-builder" element={<ResumeBuilder />} />
       <Route path="/resume-templates" element={<ResumeTemplates/>} />
       <Route path="/final-review" element={<ResumeReviewFinalScreen/>} />
