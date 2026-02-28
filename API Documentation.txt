@@ -1,0 +1,49 @@
+BASE_URL=http://127.0.0.1:8000
+1-Authentication process
+/auth/signup/
+request:
+ {
+  "full_name": "name",
+  "email": "anymail id@example.com"
+ }
+ response
+ {
+  "message": "OTP sent",
+  "signup_id": "uuid"
+ }
+2-verify otp-setpassword
+/auth/signup/
+request:
+{
+  "signup_id": "uuid_from_previous_response",
+  "otp": "otp received in mail",
+  "password": "your password"
+}
+response
+{
+  "message": "User created successfully"
+}
+3-Login (Get Tokens)
+/auth/token
+request:
+{
+  "username": "name used for signup ",
+  "email": "mail used for signup"
+  "password": "password set above "
+}
+response
+{
+ "access": "your access token",
+ "refresh": "your refresh token"
+4-Token Usage
+Access Token → Used for API authentication
+Refresh Token → Used to generate new access token
+/auth/token/refresh
+request:
+{
+  "refresh": "refresh_token_here"
+}
+response:
+{
+  "access":"new access token"
+}
