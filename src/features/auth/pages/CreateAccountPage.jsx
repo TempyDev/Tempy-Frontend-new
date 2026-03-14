@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AuthCard from "../components/AuthCard";
 import GoogleSignInButton from "../components/GoogleSignInButton";
 import PrimaryButton from "../../../shared/components/buttons/PrimaryButton";
+import authService from "../../../services/authService";
 
 export default function CreateAccountPage() {
   const [form, setForm] = useState({
@@ -10,6 +11,8 @@ export default function CreateAccountPage() {
     email: "",
   });
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const validate = () => {
     const nextErrors = {};
@@ -28,10 +31,27 @@ export default function CreateAccountPage() {
     return Object.keys(nextErrors).length === 0;
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    if (validate()) {
-      console.log("Form Submitted", form);
+    if (!validate()) {
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const response = await authService.requestSignup(form.fullName, form.email);
+      // Store signup data and proceed to OTP page
+      navigate("/auth/verify", {
+        state: {
+          signup_id: response.signup_id,
+          email: form.email,
+          fullName: form.fullName,
+        },
+      });
+    } catch (error) {
+      setErrors({ submit: error.message });
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -41,6 +61,12 @@ export default function CreateAccountPage() {
       subtitle="Save your work and access it anytime."
     >
       <form onSubmit={handleSubmit} noValidate>
+        {errors.submit && (
+          <div className="mb-4 rounded-md border border-red-300 bg-red-50 p-3">
+            <p className="text-sm text-red-700">{errors.submit}</p>
+          </div>
+        )}
+
         <div className="mb-4">
           <label className="mb-1 block text-sm font-medium text-gray-700">
             Full name
@@ -52,11 +78,12 @@ export default function CreateAccountPage() {
             onChange={(event) =>
               setForm((prev) => ({ ...prev, fullName: event.target.value }))
             }
+            disabled={loading}
             className={`w-full rounded-md border px-3 py-2 text-sm transition focus:outline-none focus:ring-2 ${
               errors.fullName
                 ? "border-red-500 focus:ring-red-400"
                 : "border-gray-300 focus:ring-purple-500"
-            }`}
+            } ${loading ? "opacity-50" : ""}`}
           />
           {errors.fullName && (
             <p className="mt-1 text-xs text-red-500">{errors.fullName}</p>
@@ -74,18 +101,21 @@ export default function CreateAccountPage() {
             onChange={(event) =>
               setForm((prev) => ({ ...prev, email: event.target.value }))
             }
+            disabled={loading}
             className={`w-full rounded-md border px-3 py-2 text-sm transition focus:outline-none focus:ring-2 ${
               errors.email
                 ? "border-red-500 focus:ring-red-400"
                 : "border-gray-300 focus:ring-purple-500"
-            }`}
+            } ${loading ? "opacity-50" : ""}`}
           />
           {errors.email && (
             <p className="mt-1 text-xs text-red-500">{errors.email}</p>
           )}
         </div>
 
-        <PrimaryButton to="/auth/verify">Continue</PrimaryButton>
+        <PrimaryButton type="submit" disabled={loading}>
+          {loading ? "Sending OTP..." : "Continue"}
+        </PrimaryButton>
       </form>
 
       <p className="mt-2 text-center text-xs italic text-gray-500">

@@ -1,0 +1,76 @@
+<html>
+<head>
+    <title>CORS Test</title>
+    <style>
+        body { font-family: monospace; padding: 20px; }
+        .cors-test { border: 1px solid #ccc; padding: 20px; margin: 20px 0; }
+        .success { color: green; }
+        .error { color: red; }
+        pre { background: #f5f5f5; padding: 10px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>CORS Headers Test</h1>
+    <button onclick="testCORS()">Test CORS Request</button>
+    
+    <div id="result"></div>
+    
+    <script>
+async function testCORS() {
+    const resultDiv = document.getElementById('result');
+    resultDiv.innerHTML = '<p>Testing...</p>';
+    
+    try {
+        const response = await fetch('http://127.0.0.1:8000/auth/signup/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include',
+            body: JSON.stringify({
+                full_name: 'Browser Test User',
+                email: 'browsertest@example.com'
+            })
+        });
+        
+        const data = await response.json();
+        
+        // Get all response headers
+        const headers = {};
+        response.headers.forEach((value, key) => {
+            headers[key] = value;
+        });
+        
+        const corsHeaders = Object.keys(headers)
+            .filter(k => k.toLowerCase().includes('access-control'))
+            .reduce((obj, key) => {
+                obj[key] = headers[key];
+                return obj;
+            }, {});
+        
+        let html = '<div class="cors-test">';
+        html += `<h2>Response Status: ${response.status}</h2>`;
+        html += '<h3>CORS Headers:</h3>';
+        
+        if (Object.keys(corsHeaders).length > 0) {
+            html += '<p class="success">✓ CORS Headers Found:</p>';
+            html += '<pre>' + JSON.stringify(corsHeaders, null, 2) + '</pre>';
+        } else {
+            html += '<p class="error">✗ NO CORS Headers Found</p>';
+        }
+        
+        html += '<h3>All Headers:</h3>';
+        html += '<pre>' + JSON.stringify(headers, null, 2) + '</pre>';
+        
+        html += '<h3>Response Body:</h3>';
+        html += '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+        html += '</div>';
+        
+        resultDiv.innerHTML = html;
+    } catch (error) {
+        resultDiv.innerHTML = `<div class="cors-test"><p class="error">Error: ${error.message}</p></div>`;
+    }
+}
+    </script>
+</body>
+</html>
